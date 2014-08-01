@@ -1,0 +1,19 @@
+<section class="container" ng-controller="UploadOrderCtrl">
+    <h1>Upload Order</h1>
+
+    <form name="orderForm" role="form" ng-submit="submitOrder(orderForm.$valid)">
+        <div class="form-group">
+            <label for="orderName">Name:</label>
+            <input id="orderName" type="text" required ng-model="orderName"/>
+        </div>
+
+        <div class="form-group">
+            <label for="termsAndConditions">Please accept terms and conditins</label>
+            <input id="termsAndConditions" type="checkbox"/>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit Order</button>
+        </div>
+    </form>
+</section>

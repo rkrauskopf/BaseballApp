@@ -1,0 +1,15 @@
+<div class="container" ng-controller="OrderListCtrl">
+    <h1>Upload Video</h1>
+
+    <form name="videoForm" role="form" ng-submit="submitVideo(videoForm.$valid)">
+        <div class="form-group">
+            <label for="videoName">Name:</label>
+            <input id="videoName" type="text" required ng-model="videoName"/>
+        </div>
+
+        <div class="form-group">
+            <input id="videoFile" type="file" required ng-model="videoBinary"/>
+            <button type="submit">Submit Video</button>
+        </div>
+    </form>
+</div>

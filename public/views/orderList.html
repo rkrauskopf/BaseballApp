@@ -1,0 +1,19 @@
+<div class="container" ng-controller="OrderListCtrl">
+    <h1>Order List!</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="order in orders">
+            <tr>
+                <td>{{order.name}}</td>
+                <td ng-if="order.assignedTo && !order.isEvaluated">Evaluating</td>
+                <td ng-if="order.isEvaluated && !order.isPayed"><a href="/orderList">Pay</a></td>
+                <td ng-if="order.isEvaluated && order.isPayed"><a href="/download">Download Video</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
