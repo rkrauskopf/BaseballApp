@@ -18,8 +18,6 @@ module.exports = function(router, passport) {
         // create a video (accessed at POST http://localhost:8080/api/videos)
         .post(function(req, res) {
 
-            //var video = new Video(); 		// create a new instance of the Bear model
-
             MongoClient.connect(dbConfig.url, function(err, db) {
 
                 var form = new multiparty.Form({maxFieldsSize: "30MB"});
