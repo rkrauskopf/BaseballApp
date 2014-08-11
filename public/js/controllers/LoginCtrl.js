@@ -1,13 +1,4 @@
 angular.module('LoginCtrl', []).controller('LoginCtrl', function($scope, $rootScope, $http, $location) {
-    $scope.tagline = 'To the moon!';
-
-
-    /*
-     $http.get('/api/orders')
-     .success(function(data) {
-     console.log(data);
-     });
-    */
 
     $scope.submitForm = function(isValid) {
         if(isValid) {
