@@ -6,9 +6,9 @@ angular.module('LoginCtrl', []).controller('LoginCtrl', function($scope, $rootSc
                 "email": $scope.loginEmail,
                 "password": $scope.loginPassword
             };
-            $http.post('/test/login', data)
+            $http.post('/auth/login', data)
                 .success(function(returnObj) {
-                    console.log('Log In Success: ' + returnObj.success);
+                    console.log('Log In Successfully!');
                     $rootScope.isAuthenticated = true;
                     $location.path('/profile');
                 })
