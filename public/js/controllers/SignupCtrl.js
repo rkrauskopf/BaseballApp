@@ -15,7 +15,7 @@ angular.module('SignupCtrl', []).controller('SignupCtrl', function($scope, $http
                 "email": $scope.loginEmail,
                 "password": $scope.loginPassword
             };
-            $http.post('/auth/signup', data)
+            $http.post('/auth/customerSignup', data)
                 .success(function(returnObj) {
 
                     if(returnObj.error) {
