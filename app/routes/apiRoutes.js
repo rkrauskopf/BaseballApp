@@ -4,13 +4,13 @@ var Order = require('../models/order.js');
 
 var multiparty = require('multiparty');
 
+var authUtils = require('../utils/authUtils.js');
+
 var MongoClient = require('mongodb').MongoClient;
 
 var mongodb = require('mongodb');
 
 var dbConfig = require('../../config/database.js');
-
-var mongoDBConnectString = 'mongodb://localhost/apiDB';
 
 module.exports = function(router, passport) {
     router.route('/api/videos')
@@ -86,8 +86,6 @@ module.exports = function(router, passport) {
             });
         })
         .put(function(req, res) {
-
-            // use our video model to find the bear we want
             Video.findById(req.params.video_id, function(err, video) {
 
                 if (err)
@@ -196,5 +194,14 @@ module.exports = function(router, passport) {
 
                 res.json({ message: 'Successfully deleted' });
             });
+        });
+
+    router.route('/api/trainers')
+        .get(authUtils.isAdmin, function(req, res) {
+            User.find({'local.userType': 'Trainer'}, function(err, trainers)
+            {
+               res.json(trainers);
+            });
+
         });
 }
