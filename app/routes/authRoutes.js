@@ -1,12 +1,28 @@
 module.exports = function(router, passport) {
 
-
     //// =====================================
-    // LOCAL SIGNUP =====================
+    // LOCAL USER SIGNUP =====================
     // =====================================
 
-    router.post('/auth/signup', function(req, res, next) {
+    router.post('/auth/customerSignup', function(req, res, next) {
         passport.authenticate('local-user-signup', function(err, user, info) {
+            if (err) { return next(err); }
+            if (!user) {
+                return res.send('406', 'User already exists');
+            }
+            req.logIn(user, function(err) {
+                if (err) { return next(err); }
+                return res.send('201', 'User Created');
+            });
+        })(req, res, next);
+    });
+
+    //// =====================================
+    // LOCAL TRAINER SIGNUP =====================
+    // =====================================
+
+    router.post('/auth/trainerSignup', function(req, res, next) {
+        passport.authenticate('local-trainer-signup', function(err, user, info) {
             if (err) { return next(err); }
             if (!user) {
                 return res.send('406', 'User already exists');
@@ -29,7 +45,8 @@ module.exports = function(router, passport) {
             }
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
-                return res.send('200', 'Successful Login!');
+                //return res.send('200', 'Successful Login!');
+                return res.json({userType: user._doc.local.userType})
             });
         })(req, res, next);
     });
