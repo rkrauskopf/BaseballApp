@@ -22,8 +22,9 @@
         <script src="js/controllers/UploadOrderCtrl.js"></script>
         <script src="js/controllers/ProfileCtrl.js"></script>
         <script src="js/controllers/UploadVideoCtrl.js"></script>
-        <script src="js/services/OrderService.js"></script>
-
+        <script src="js/controllers/TrainerListCtrl.js"></script>
+        <script src="js/controllers/CustomerListCtrl.js"></script>
+        <script src="js/services/OrderService.js"></script>"
 
         <!--
         <script src="js/services/VideoService.js"></script>
@@ -45,9 +46,11 @@
                     <li ng-if="!isAuthenticated"><a href="/login">Login</a></li>
                     <li ng-if="!isAuthenticated"><a href="/signup">Sign Up</a></li>
                     <li ng-if="isAuthenticated"><a ng-click="logOut()">Log Out</a></li>
-                    <li ng-if="isAuthenticated"><a href="/profile">Profile</a></li>
-                    <li ng-if="isAuthenticated"><a href="/orderList">Orders</a></li>
-                    <li ng-if="isAuthenticated"><a href="/uploadVideo">Create Order</a></li>
+                    <li ng-if="isAuthenticated && userType === 'Customer'"><a href="/profile">Profile</a></li>
+                    <li ng-if="isAuthenticated && userType === 'Customer'"><a href="/orderList">Orders</a></li>
+                    <li ng-if="isAuthenticated && userType === 'Customer'"><a href="/uploadVideo">Create Order</a></li>
+                    <li ng-if="isAuthenticated && userType === 'Admin'"><a href="/trainerList">Trainers</a></li>
+                    <li ng-if="isAuthenticated && userType === 'Admin'"><a href="/customerList">Customers</a></li>
                 </ul>
             </nav>
 

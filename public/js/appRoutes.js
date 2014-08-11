@@ -37,6 +37,14 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         .when('/uploadOrder', {
             templateUrl: 'views/uploadOrder.html',
             controller: 'UploadOrderCtrl'
+        })
+        .when('/trainerList', {
+            templateUrl: 'views/trainerList.html',
+            controller: 'TrainerListCtrl'
+        })
+        .when('/customerList', {
+            templateUrl: 'views/customerList.html',
+            controller: 'CustomerListCtrl'
         });
 
     $locationProvider.html5Mode(true);
