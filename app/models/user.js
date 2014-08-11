@@ -12,25 +12,29 @@ var UserSchema   = new Schema({
 
     local            : {
         email        : String,
-        password     : String
+        password     : String,
+        userType     : String
     },
     facebook         : {
         id           : String,
         token        : String,
         email        : String,
-        name         : String
+        name         : String,
+        userType     : String
     },
     twitter          : {
         id           : String,
         token        : String,
         displayName  : String,
-        username     : String
+        username     : String,
+        userType     : String
     },
     google           : {
         id           : String,
         token        : String,
         email        : String,
-        name         : String
+        name         : String,
+        userType     : String
     }
 
 });
