@@ -42,9 +42,20 @@ var port = process.env.PORT || 8080; 		// set our port
 
 var router = express.Router();
 
+//pass in the Router instance to set up the various routes
 require('./app/routes/authRoutes.js')(router, passport);
-require('./app/routes/viewRoutes.js')(router, passport);
 require('./app/routes/apiRoutes.js')(router, passport);
+
+router.use(function(req, res, next) {
+    //do logging
+    console.log('Something is happening');
+    next(); // make sure we go to the next routes and don't stop there
+});
+
+//Redirect to the Angular app
+router.get('/', function(req, res) {
+    res.sendfile('./public/index.html');
+});
 
 //myRouter is just a router object that has been initialized and set up in the
 //routes.js file. This is telling Express to use it at the / level
