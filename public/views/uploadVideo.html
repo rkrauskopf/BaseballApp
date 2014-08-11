@@ -2,6 +2,8 @@
     <h1>Upload Video</h1>
 
     <div class="alert alert-danger" ng-if="errorMessage">{{errorMessage}}</div>
+    <div class="bg-success" ng-if="successMessage">{{successMessage}}</div>
+
 
     <form name="videoForm" role="form" ng-submit="submitVideo(videoForm.$valid)">
         <div class="form-group">

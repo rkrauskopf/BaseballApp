@@ -1,5 +1,8 @@
 <section class="container" ng-controller="UploadOrderCtrl">
-    <h1>Upload Order</h1>
+    <h1>Please Complete Your Order</h1>
+
+    <div ng-if="errorMessage">{{errorMessage}}</div>
+    <div ng-if="successMessage">{{successMessage}}</div>
 
     <form name="orderForm" role="form" ng-submit="submitOrder(orderForm.$valid)">
         <div class="form-group">
@@ -8,7 +11,7 @@
         </div>
 
         <div class="form-group">
-            <label for="termsAndConditions">Please accept terms and conditins</label>
+            <label for="termsAndConditions">Please accept terms and conditions</label>
             <input id="termsAndConditions" type="checkbox"/>
         </div>
 

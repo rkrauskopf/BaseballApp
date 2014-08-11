@@ -1,6 +1,7 @@
 angular.module('MainCtrl', []).controller('MainCtrl', function($scope, $rootScope, $http, $location) {
 
     $scope.tagline = 'To the moon!';
+    $rootScope.uploadVideoId = null;
 
     if(!$rootScope.isAuthenticated) {
         $rootScope.isAuthenticated = false;

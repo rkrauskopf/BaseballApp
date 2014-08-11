@@ -35,8 +35,8 @@ module.exports = function(router, passport) {
                     gs.writeFile(files.fileBinary[0].path, function(err, gs) {
                         //This is where we can get access to the file ID that was returned.
                         //This can be used to save add a video to a user's VideoID repository
-                        gs.currentChunk.file.fileId.toString();
-                        res.send("Success");
+                        var videoID = gs.currentChunk.file.fileId.toString();
+                        res.send(videoID);
                     });
 
                 });
@@ -124,9 +124,13 @@ module.exports = function(router, passport) {
 
             var order = new Order(); 		// create a new instance of the Bear model
             order.name = req.body.name;  // set the bears name (comes from the request)
+
+            //Whenever an order is created the the isEvaluated and isPayed settings will
+            //be set to false by default
+
             order.originalVideoId = req.body.originalVideoId;
-            order.isEvaluated = req.body.isEvaluated;
-            order.isPayed = req.body.isPayed;
+            order.isEvaluated = false;
+            order.isPayed = false;
 
             // save the video and check for errors
             if(order.isPayed !== undefined) {

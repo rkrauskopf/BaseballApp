@@ -24,20 +24,13 @@ angular.module('UploadVideoCtrl', [])
         }
     }])
     */
-    .controller('UploadVideoCtrl', function($scope, $http) {
+    .controller('UploadVideoCtrl', function($scope, $rootScope, $http, $location) {
 
         $scope.videoName = null;
         $scope.fileInputScope = null;
 
         $scope.submitVideo = function(isValid) {
             if(isValid) {
-
-                /*
-                var data = {
-                    name: $scope.videoName,
-                    fileBinary: $scope.file
-                };
-                */
 
                 var formData = new FormData();
 
@@ -55,8 +48,11 @@ angular.module('UploadVideoCtrl', [])
                         transformRequest: angular.identity,
                         headers: { 'Content-Type' : undefined }
                     })
-                    .success(function() {
+                    .success(function(videoId) {
+                        $scope.successMessage = 'successful upload!';
                         console.log('successful upload!');
+                        $rootScope.uploadVideoId = videoId;
+                        $location.path('/uploadOrder');
                     })
                     .error(function(message) {
                         console.log('unsuccessful upload');

@@ -1,15 +1,22 @@
-angular.module('UploadOrderCtrl', []).controller('UploadOrderCtrl', function($scope, $http) {
+angular.module('UploadOrderCtrl', []).controller('UploadOrderCtrl', function($scope, $rootScope, $http) {
 
-    $scope.videoName = null;
-    $scope.videBinary = null;
+    $scope.orderName = null;
 
-    $scope.videoForm = function(isValid) {
+    $scope.submitOrder = function(isValid) {
         if(isValid) {
-            $http.post('/api/videos', data)
+
+            var data = {
+                name: $scope.orderName,
+                originalVideoId: $rootScope.uploadVideoId
+            };
+
+            $http.post('/api/orders', data)
                 .success(function() {
+                    $scope.successMessage = 'Successful Upload';
                     console.log('successful upload!');
                 })
                 .error(function() {
+                   $scope.errorMessage = 'Error Message';
                    console.log('unsuccessful upload');
                 });
         }
