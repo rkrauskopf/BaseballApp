@@ -11,6 +11,9 @@ var UserSchema   = new Schema({
 	//email: String
 
     local            : {
+        //the First and Last Name will currently only be used to identify Trainers
+        firstName    : String,
+        lastName     : String,
         email        : String,
         password     : String,
         userType     : String

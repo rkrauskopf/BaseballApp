@@ -42,6 +42,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             templateUrl: 'views/trainerList.html',
             controller: 'TrainerListCtrl'
         })
+        .when('/newTrainer', {
+            templateUrl: '/views/newTrainer.html',
+            controller: 'NewTrainerCtrl'
+        })
         .when('/customerList', {
             templateUrl: 'views/customerList.html',
             controller: 'CustomerListCtrl'

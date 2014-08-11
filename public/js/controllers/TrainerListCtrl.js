@@ -5,7 +5,7 @@ angular.module('TrainerListCtrl', []).controller('TrainerListCtrl', function($sc
         .success(function(trainers) {
             $scope.trainers = trainers;
         })
-        .error(function(errMessage) {
-
+        .error(function(errorMessage) {
+            $scope.errorMesage = errorMessage;
         });
 });

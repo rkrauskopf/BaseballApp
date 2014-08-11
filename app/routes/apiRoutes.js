@@ -204,4 +204,13 @@ module.exports = function(router, passport) {
             });
 
         });
+
+    router.route('/api/customers')
+        .get(authUtils.isAdmin, function(req, res) {
+            User.find({'local.userType': 'Customer'}, function(err, customers)
+            {
+                res.json(customers);
+            });
+
+        });
 }

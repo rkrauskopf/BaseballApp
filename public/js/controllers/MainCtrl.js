@@ -1,4 +1,8 @@
-angular.module('MainCtrl', []).controller('MainCtrl', function($scope, $rootScope, $http, $location) {
+angular.module('MainCtrl', [])
+    .config(function($httpProvider) {
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    })
+    .controller('MainCtrl', function($scope, $rootScope, $http, $location) {
 
     $scope.tagline = 'To the moon!';
     $rootScope.uploadVideoId = null;
@@ -7,12 +11,6 @@ angular.module('MainCtrl', []).controller('MainCtrl', function($scope, $rootScop
         $rootScope.isAuthenticated = false;
     }
 
-/*
-    $http.get('/api/orders')
-        .success(function(data) {
-            console.log(data);
-        });
-*/
     $scope.logOut = function() {
         $http.get('auth/logout')
         .success(function() {
@@ -24,21 +22,26 @@ angular.module('MainCtrl', []).controller('MainCtrl', function($scope, $rootScop
         });
     };
 
-    //logic currently requires that orders be defined
-    /*
-    var data = {
-        "name": "here is an order",
-        "isPayed" : false
-    };
+    $scope.facebookLogin = function() {
+        $http.get('/auth/facebook')
+            .success(function(){
+                console.log('successful facebook login!');
+            })
+            .error(function(message) {
+               console.log('Unsuccessful facebook login:', message);
+            });
 
+    }
 
+    $scope.gmailLogin = function() {
+        $http.get('/auth/google')
+            .success(function(){
+                console.log('successful Gmail login!');
+            })
+            .error(function(message) {
+                console.log('Unsuccessful Gmail login:', message);
+            });
 
-    $http.post('/api/orders', data)
-        .success(function(data) {
-            console.log('hurray! successful order!');
-        })
-        .error(function(message) {
-            console.log('damn we suck again!');
-        });
-    */
+    }
+
 });

@@ -10,10 +10,9 @@ module.exports = function(router, passport) {
             if (!user) {
                 return res.send('406', 'User already exists');
             }
-            req.logIn(user, function(err) {
-                if (err) { return next(err); }
-                return res.send('201', 'User Created');
-            });
+
+            return res.send('201', 'Customer Created');
+
         })(req, res, next);
     });
 
@@ -25,12 +24,11 @@ module.exports = function(router, passport) {
         passport.authenticate('local-trainer-signup', function(err, user, info) {
             if (err) { return next(err); }
             if (!user) {
-                return res.send('406', 'User already exists');
+                return res.send('406', 'Trainer already exists');
             }
-            req.logIn(user, function(err) {
-                if (err) { return next(err); }
-                return res.send('201', 'User Created');
-            });
+
+            return res.send('201', 'Trainer Created');
+
         })(req, res, next);
     });
     //// =====================================

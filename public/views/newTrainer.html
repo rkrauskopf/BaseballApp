@@ -1,0 +1,29 @@
+<section class="container" ng-controller="NewTrainerCtrl">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1>New Trainer</h1>
+
+        <div class="alert alert-danger" ng-if="errorMessage">{{errorMessage}}</div>
+        <form name="newTrainerForm" ng-submit="submitForm(newTrainerForm.$valid)">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input id="firstName" type="text" class="form-control" required ng-model="firstName"/>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input id="lastName" type="text" class="form-control" required ng-model="lastName"/>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Login Email:</label>
+                <input id="email" type="email" class="form-control" required ng-model="email"/>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input id="password" type="password" class="form-control" required ng-model="password"/>
+            </div>
+
+            <button type="submit" class="btn btn-warning btn-log">Create New Trainer</button>
+        </form>
+    </div>
+</section>

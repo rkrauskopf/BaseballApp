@@ -1,12 +1,19 @@
 <div class="container" ng-controller="TrainerListCtrl">
     <h1>Trainer List</h1>
+    <a href="/newTrainer">New Trainer</a>
+
+    <div class="alert alert-danger" ng-if="errorMessage">{{errorMessage}}</div>
     <table class="table table-striped table-hover">
         <thead>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
             <th scope="col">Email</th>
             <th scope="col">Delete Column</th>
         </thead>
         <tbody ng-repeat="trainer in trainers">
             <tr>
+                <td>{{trainer.local.firstName}}</td>
+                <td>{{trainer.local.lastName}}</td>
                 <td>{{trainer.local.email}}</td>
                 <td><a href="/delete">Delete</a></td>
             </tr>
