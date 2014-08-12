@@ -5,8 +5,8 @@
         <th scope="col">Email</th>
         <th scope="col">Delete Column</th>
         </thead>
-        <tbody ng-repeat="customer in customers">
-        <tr>
+        <tbody>
+        <tr ng-repeat="customer in customers">
             <td>{{customer.local.email}}</td>
             <td><a href="/delete">Delete</a></td>
         </tr>

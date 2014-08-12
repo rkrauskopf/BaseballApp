@@ -10,13 +10,34 @@
             <th scope="col">Email</th>
             <th scope="col">Delete Column</th>
         </thead>
-        <tbody ng-repeat="trainer in trainers">
-            <tr>
+        <tbody>
+            <tr ng-repeat="trainer in trainers">
                 <td>{{trainer.local.firstName}}</td>
                 <td>{{trainer.local.lastName}}</td>
                 <td>{{trainer.local.email}}</td>
-                <td><a href="/delete">Delete</a></td>
+                <td><a ng-click="deleteTrainer($event)">Delete</a></td>
             </tr>
         </tbody>
     </table>
+
+    <!--Confirmation Modal -->
+    <div id="confirm-modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Confirmation Modal</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you wish to delete the following user?</p>
+                    <p><em>{{deleteUserName}}</em></p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirmDelete()">Confirm</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>

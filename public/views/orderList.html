@@ -8,8 +8,8 @@
                 <th>Status</th>
             </tr>
         </thead>
-        <tbody ng-repeat="order in orders">
-            <tr>
+        <tbody>
+            <tr ng-repeat="order in orders">
                 <td>{{order.name}}</td>
                 <td><a href="/api/videos/{{order.originalVideoId}}" target="_blank" download="testDownload">Download Original Video</a></td>
                 <td ng-if="!order.assignedTo && !order.isEvaluated">Awaiting Evaluation</td>

@@ -196,13 +196,21 @@ module.exports = function(router, passport) {
             });
         });
 
+    router.route('/api/user/:user_id')
+        .delete(function(req, res) {
+            User.remove({ '_id' : req.params.user_id }, function(err) {
+                if(err) {res.send('400', err)}
+
+                res.send('200', 'User Successfully deleted');
+            });
+        });
+
     router.route('/api/trainers')
         .get(authUtils.isAdmin, function(req, res) {
             User.find({'local.userType': 'Trainer'}, function(err, trainers)
             {
                res.json(trainers);
             });
-
         });
 
     router.route('/api/customers')
